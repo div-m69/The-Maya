@@ -22,7 +22,7 @@ export function LandingPage() {
             <span className="text-sm rounded-none text-text-secondary">MAYA AI 1.0 is now live</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="hero-title text-white mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             Smarter Business <br />
             Decisions with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-glow">AI Guidance</span>
           </h1>
@@ -164,9 +164,9 @@ export function LandingPage() {
       </section>
 
       {/* 4. METRICS */}
-      <section className="py-20 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+      <section className="py-24 bg-black">
         <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-32">
                 <Metric number="10,000+" label="Queries Answered" />
                 <Metric number="95%" label="User Satisfaction" />
                 <Metric number="₹50Cr+" label="Loans Facilitated" />
@@ -216,9 +216,9 @@ function AgentCard({ icon, title, color }: { icon: React.ReactNode, title: strin
 
 function Metric({ number, label }: { number: string, label: string }) {
     return (
-        <div>
-            <div className="text-5xl font-bold text-white mb-2 text-glow">{number}</div>
-            <div className="text-text-secondary uppercase tracking-widest text-sm">{label}</div>
+        <div className="flex flex-col items-center text-center">
+            <div className="metric-number mb-1">{number}</div>
+            <div className="text-[10px] md:text-xs font-medium text-white/40 uppercase tracking-[0.2em]">{label}</div>
         </div>
     )
 }

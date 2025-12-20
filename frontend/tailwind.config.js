@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         mono: ['"Geist Mono"', 'monospace'],
         sans: ['Inter', 'sans-serif'],
+        display: ['__esbuild_6b67ff', '__esbuild_Fallback_6b67ff', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

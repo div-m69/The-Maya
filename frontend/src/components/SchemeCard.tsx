@@ -9,7 +9,7 @@ export interface Scheme {
   category: string;
   description: string;
   benefits: string;
-  eligibility: any;
+  eligibility?: any;
   application_link?: string;
   relevance_score?: number;
   explanation?: string;

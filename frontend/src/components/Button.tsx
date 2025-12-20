@@ -19,7 +19,7 @@ export function Button({
   const baseStyles = "inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variants = {
-    primary: "bg-primary text-black hover:bg-white hover:shadow-[0_0_20px_rgba(0,255,178,0.6)]",
+    primary: "bg-primary text-black hover:bg-cyan hover:shadow-[0_0_20px_rgba(0,255,178,0.6)]",
     secondary: "bg-secondary text-black hover:bg-white hover:shadow-[0_0_20px_rgba(0,201,255,0.6)]",
     outline: "border border-primary text-primary hover:bg-primary/10",
     ghost: "text-text-secondary hover:text-white hover:bg-white/5",

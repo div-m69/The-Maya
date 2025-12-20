@@ -20,7 +20,59 @@
   .text-glow {
     text-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
   }
+
+  .hero-title {
+    font-family: __esbuild_6b67ff, __esbuild_Fallback_6b67ff, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: none;
+    text-align: center;
+    text-indent: 0px;
+    word-spacing: 0px;
+    vertical-align: baseline;
+  }
+
+  @screen md {
+    .hero-title {
+      font-size: 72px;
+      line-height: 72px;
+      letter-spacing: -2.16px;
+    }
+  }
   
+  .metric-number {
+    font-family: __Inter_fa2f99, __Inter_Fallback_fa2f99, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: none;
+    text-align: center;
+    text-indent: 0px;
+    vertical-align: baseline;
+    word-spacing: 0px;
+    background: linear-gradient(to right, #00C9FF, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @screen md {
+    .metric-number {
+      font-size: 75px;
+      line-height: 120px;
+      letter-spacing: -2px;
+    }
+  }
+
   .geist-mono-100 { font-family: "Geist Mono", monospace; font-weight: 100; }
   .geist-mono-200 { font-family: "Geist Mono", monospace; font-weight: 200; }
   .geist-mono-300 { font-family: "Geist Mono", monospace; font-weight: 300; }

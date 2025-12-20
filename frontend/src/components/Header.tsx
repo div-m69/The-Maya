@@ -39,7 +39,7 @@ export function Header() {
           <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
             <Bot className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
           </div>
-          <span className="text-xl font-bold tracking-wider text-white">MAYA<span className="text-primary">.AI</span></span>
+          <span className="text-xl font-display font-bold tracking-wider text-white">MAYA<span className="text-primary">.AI</span></span>
         </Link>
 
         {/* Desktop Nav */}

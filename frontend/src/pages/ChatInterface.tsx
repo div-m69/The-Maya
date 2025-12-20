@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Search, Sparkles, Menu, TrendingUp } from 'lucide-react';
+import { Send, Search, Sparkles, Menu, TrendingUp, Loader2 } from 'lucide-react';
 import { Button } from '../components/Button';
 import { Message } from '../types';
 import { Message as MessageComponent } from '../components/Message';
 import { Sidebar } from '../components/Sidebar';
+import { chatService } from '../services/api';
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
@@ -17,6 +18,7 @@ export function ChatInterface() {
   ]);
   const [input, setInput] = useState('');
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -27,8 +29,8 @@ export function ChatInterface() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -40,55 +42,60 @@ export function ChatInterface() {
 
     setMessages(prev => [...prev, userMsg]);
     setInput('');
+    setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      let aiMsg: Message;
-      
-      if (input.toLowerCase().includes('scheme')) {
-        aiMsg = {
+    try {
+        // If query mentions "scheme", use scheme search (temporary logic until full Router)
+        if (input.toLowerCase().includes('scheme') || input.toLowerCase().includes('loan') || input.toLowerCase().includes('subsidy')) {
+            const schemes = await chatService.searchSchemes(userMsg.content);
+            
+            const aiMsg: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'assistant',
+                content: schemes.length > 0 
+                    ? "Here are some schemes that might help you:" 
+                    : "I couldn't find any specific schemes matching your criteria right now.",
+                timestamp: new Date(),
+                type: 'scheme-list',
+                schemes: schemes.map(s => ({
+                    id: s.id.toString(),
+                    name: s.name,
+                    category: s.category,
+                    description: s.description,
+                    benefits: s.benefits,
+                    relevance_score: 90, // Placeholder
+                    explanation: "Matched based on your query", // Placeholder
+                    key_benefit: s.benefits.substring(0, 50) + "..."
+                }))
+            };
+            setMessages(prev => [...prev, aiMsg]);
+        } else {
+            // Fallback for general chat (currently just testing AI connection)
+            // In future, this will hit the LangGraph router
+             const response = await chatService.testAi(userMsg.content);
+             const aiMsg: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'assistant',
+                content: response.response, // Adjust based on actual API response structure
+                timestamp: new Date(),
+                type: 'text'
+            };
+            setMessages(prev => [...prev, aiMsg]);
+        }
+
+    } catch (error) {
+        console.error("Error sending message:", error);
+        const errorMsg: Message = {
             id: (Date.now() + 1).toString(),
             role: 'assistant',
-            content: "I found a few schemes that might be relevant for you based on your profile.",
-            timestamp: new Date(),
-            type: 'scheme-list',
-            schemes: [
-                {
-                    id: 's1',
-                    name: 'PM Employment Generation Programme (PMEGP)',
-                    category: 'Subsidy',
-                    description: 'Credit-linked subsidy programme for generation of employment opportunities through establishment of micro enterprises in rural as well as urban areas.',
-                    benefits: 'Subsidy up to 35% of project cost',
-                    eligibility: { age: '18+', education: '8th pass' },
-                    relevance_score: 95,
-                    explanation: 'Matches your requirement for manufacturing business setup.',
-                    key_benefit: '35% Subsidy on Project Cost'
-                },
-                {
-                    id: 's2',
-                    name: 'CGTMSE - Credit Guarantee Fund',
-                    category: 'Loan',
-                    description: 'Collateral-free credit to the Micro and Small Enterprise Sector. Both existing and new enterprises are eligible.',
-                    benefits: 'Collateral-free loan up to ₹2 Crore',
-                    eligibility: { type: 'MSE' },
-                    relevance_score: 88,
-                    explanation: 'Good option if you lack collateral security.',
-                    key_benefit: 'Collateral-free Loan'
-                }
-            ]
-        };
-      } else {
-        aiMsg = {
-            id: (Date.now() + 1).toString(),
-            role: 'assistant',
-            content: "I'm analyzing your request. Just a moment...",
+            content: "Sorry, I encountered an error while processing your request.",
             timestamp: new Date(),
             type: 'text'
         };
-      }
-      
-      setMessages(prev => [...prev, aiMsg]);
-    }, 1000);
+        setMessages(prev => [...prev, errorMsg]);
+    } finally {
+        setIsLoading(false);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -114,8 +121,8 @@ export function ChatInterface() {
                     <Menu size={24} />
                 </button>
                 <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-sm font-medium text-text-secondary">Online</span>
+                    <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                    <span className="text-sm font-medium text-text-secondary">MAYA</span>
                 </div>
             </div>
             <div className="flex items-center gap-4">

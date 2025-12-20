@@ -52,7 +52,7 @@
 │  Google Gemini API   │          │ Neon.tech Postgres   │
 │  (External)          │          │ (Serverless)         │
 │                      │          │                      │
-│  • Gemini 1.5 Flash  │          │ • pgvector extension │
+│  • Gemini 2.0 Flash  │          │ • pgvector extension │
 │  • Text Generation   │          │ • Auto-scaling       │
 │  • Embeddings        │          │ • Connection pooling │
 │  • Zero local RAM    │          │ • 3GB free tier      │
@@ -88,8 +88,8 @@ pydantic==2.6.1                     # Data validation
 pydantic-settings==2.1.0            # Settings management
 
 # Google Gemini Integration (CRITICAL)
-langchain-google-genai==1.0.1       # Connects to Gemini Flash + Embeddings
-google-generativeai==0.3.2          # Google's official SDK (compatible version)
+langchain-google-genai>=2.0.0       # Connects to Gemini Flash + Embeddings
+google-generativeai>=0.8.0          # Google's official SDK (compatible version)
 
 # Agent Orchestration
 langgraph==0.0.39                   # Multi-agent state management
@@ -195,7 +195,7 @@ class GeminiService:
     def __init__(self):
         # Initialize LLM (for chat and reasoning)
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.0-flash",
             google_api_key=settings.GEMINI_API_KEY,
             temperature=0.7,
             convert_system_message_to_human=True  # Gemini compatibility

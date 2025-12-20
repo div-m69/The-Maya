@@ -5,44 +5,44 @@ This checklist compresses the 16-week PRD timeline into a 2-week intensive MVP s
 ## 📅 Week 1: Foundation & Scheme Navigator
 
 ### Day 1: Project Setup 🏗️
-- [ ] **Repository Structure**
-    - [ ] Create `frontend/` (React + Vite + TS + Tailwind)
-    - [ ] Create `backend/` (FastAPI + Python 3.11+)
-    - [ ] Setup `.env` templates for both
+- [x] **Repository Structure**
+    - [x] Create `frontend/` (React + Vite + TS + Tailwind)
+    - [x] Create `backend/` (FastAPI + Python 3.11+)
+    - [x] Setup `.env` templates for both
 - [ ] **Database Setup (Neon.tech)**
     - [ ] Create PostgreSQL instance
     - [ ] Enable `pgvector` extension
     - [ ] Get connection string
-- [ ] **Dependencies**
-    - [ ] Backend: `fastapi`, `uvicorn`, `langchain-google-genai`, `langgraph`, `asyncpg`, `sqlalchemy`, `pgvector`
-    - [ ] Frontend: `axios`, `lucide-react`, `zustand`, `react-markdown`
+- [x] **Dependencies**
+    - [x] Backend: `fastapi`, `uvicorn`, `langchain-google-genai`, `langgraph`, `asyncpg`, `sqlalchemy`, `pgvector`
+    - [x] Frontend: `axios`, `lucide-react`, `zustand`, `react-markdown`
 
 ### Day 2: Database & Data 💾
-- [ ] **Schema Design**
-    - [ ] Define `schemes` table (id, name, description, benefits, embedding, criteria)
-    - [ ] Define `users` table (basic auth)
-    - [ ] Define `chat_history` table
+- [x] **Schema Design**
+    - [x] Define `schemes` table (id, name, description, benefits, embedding, criteria)
+    - [x] Define `users` table (basic auth)
+    - [x] Define `chat_history` table
 - [ ] **Seed Data**
     - [ ] Prepare JSON of 20-30 popular MSME schemes
     - [ ] Write script to generate embeddings (Gemini API) and insert into DB
 
 ### Day 3: Backend Core API 🔌
 - [ ] **FastAPI Basics**
-    - [ ] Setup `main.py` application entry point
-    - [ ] Configure CORS (allow frontend)
-    - [ ] Setup DB connection (SQLAlchemy Async)
-- [ ] **Gemini Service**
-    - [ ] Implement `GeminiService` class (Singleton)
-    - [ ] method: `generate_text` (Flash 1.5)
-    - [ ] method: `embed_text` (Embedding-001)
+    - [x] Setup `main.py` application entry point
+    - [x] Configure CORS (allow frontend)
+    - [x] Setup DB connection (SQLAlchemy Async)
+- [x] **Gemini Service**
+    - [x] Implement `GeminiService` class (Singleton)
+    - [x] method: `generate_text` (Flash 1.5)
+    - [x] method: `embed_text` (Embedding-001)
 
 ### Day 4: Scheme Navigator Logic 🧭
-- [ ] **Search Algorithm**
-    - [ ] Implement cosine similarity search using `pgvector`
+- [x] **Search Algorithm**
+    - [x] Implement cosine similarity search using `pgvector`
     - [ ] Implement metadata filtering (industry, turnover)
-- [ ] **API Endpoint**
-    - [ ] `POST /api/chat/schemes`
-    - [ ] Logic: User Query -> Embedding -> Vector Search -> LLM Rank -> Response
+- [x] **API Endpoint**
+    - [x] `POST /api/chat/schemes`
+    - [x] Logic: User Query -> Embedding -> Vector Search -> LLM Rank -> Response (LLM Rank to be added)
 
 ### Day 5: Frontend Interface 🎨
 - [ ] **Layout**
@@ -54,11 +54,11 @@ This checklist compresses the 16-week PRD timeline into a 2-week intensive MVP s
     - [ ] `SchemeCard` (Display scheme details)
 
 ### Day 6: Integration & Basic Chat 🔗
-- [ ] **Connect Frontend-Backend**
-    - [ ] Setup Axios client with base URL
-    - [ ] Handle API loading states & errors
-- [ ] **Basic Flow Test**
-    - [ ] User types query -> Backend searches schemes -> Frontend displays cards
+- [x] **Connect Frontend-Backend**
+    - [x] Setup Axios client with base URL
+    - [x] Handle API loading states & errors (In Service)
+- [x] **Basic Flow Test**
+    - [x] User types query -> Backend searches schemes -> Frontend displays cards
 
 ### Day 7: Buffer & Refinement 🛠️
 - [ ] Fix CORS issues
@@ -70,11 +70,11 @@ This checklist compresses the 16-week PRD timeline into a 2-week intensive MVP s
 ## 📅 Week 2: Multi-Agent System & Launch
 
 ### Day 8: LangGraph Orchestration 🤖
-- [ ] **State Management**
-    - [ ] Define `AgentState` (messages, current_agent, user_profile)
-- [ ] **Router Agent**
-    - [ ] Implement classification logic (Scheme vs. Market vs. Brand vs. Finance)
-    - [ ] Route user query to appropriate node
+- [x] **State Management**
+    - [x] Define `AgentState` (messages, current_agent, user_profile)
+- [x] **Router Agent**
+    - [x] Implement classification logic (Scheme vs. Market vs. Brand vs. Finance)
+    - [x] Route user query to appropriate node
 
 ### Day 9: Specialized Agents 🧠
 - [ ] **Market Research Agent**

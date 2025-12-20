@@ -5,8 +5,8 @@ pydantic==2.6.1
 pydantic-settings==2.1.0
 
 # Google Gemini Integration (CRITICAL)
-langchain-google-genai==1.0.1
-google-generativeai==0.3.2
+langchain-google-genai>=2.0.0
+google-generativeai>=0.8.0
 
 # Agent Orchestration
 langgraph==0.0.39
@@ -15,7 +15,7 @@ langchain-core==0.1.23
 # Database
 sqlalchemy==2.0.28
 asyncpg==0.29.0
-psycopg2-binary==2.9.9
+# psycopg2-binary==2.9.9 # Removing problematic binary build for now, asyncpg is main driver
 pgvector==0.2.5
 alembic==1.13.1
 

@@ -22,7 +22,7 @@ export function Message({ message }: MessageProps) {
           "w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-2",
           isUser ? "bg-white/10" : "bg-primary/20"
       )}>
-          {isUser ? <User size={16} /> : <Bot size={16} className="text-primary" />}
+          {isUser ? <User size={16} /> : <Bot size={16} className="text-secondary" />}
       </div>
       
       <div className={clsx(
