@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bot, Menu, X } from 'lucide-react';
-import { Button } from './Button';
+import { Menu, X } from 'lucide-react';
 import { clsx } from 'clsx';
+import { Brand } from './Brand';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -35,11 +35,8 @@ export function Header() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-            <Bot className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-          </div>
-          <span className="text-xl font-display font-bold tracking-wider text-white">MAYA<span className="text-primary">.AI</span></span>
+        <Link to="/" className="group">
+          <Brand />
         </Link>
 
         {/* Desktop Nav shifted to right */}

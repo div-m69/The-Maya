@@ -6,11 +6,13 @@ from database import engine, Base, get_db
 import models
 from services.mimo_service import mimo_service
 from services.scheme_service import scheme_service
+from services.chat_history_service import chat_history_service
 from agents.graph import app_graph
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 from typing import List, Optional
 from langchain_core.messages import HumanMessage
+import uuid
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -54,6 +56,31 @@ async def health_check():
 
 class ChatRequest(BaseModel):
     message: str
+    session_id: Optional[str] = None
+
+# Chat History Endpoints
+
+@app.get("/api/history/sessions")
+async def get_sessions(db: AsyncSession = Depends(get_db)):
+    """
+    Get all unique chat sessions.
+    """
+    try:
+        sessions = await chat_history_service.get_user_sessions(db)
+        return {"sessions": sessions}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/history/{session_id}")
+async def get_session_history(session_id: str, db: AsyncSession = Depends(get_db)):
+    """
+    Get messages for a specific session.
+    """
+    try:
+        messages = await chat_history_service.get_session_history(db, session_id)
+        return messages
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/test-ai")
 async def test_ai(request: ChatRequest):
@@ -112,16 +139,34 @@ async def chat_schemes(request: ChatRequest, db: AsyncSession = Depends(get_db))
 
 # LangGraph Endpoint
 @app.post("/api/chat/agent")
-async def chat_agent(request: ChatRequest):
+async def chat_agent(request: ChatRequest, db: AsyncSession = Depends(get_db)):
     """
     Route user query via LangGraph.
     """
     try:
+        session_id = request.session_id or str(uuid.uuid4())
+        
+        # Save User Message
+        await chat_history_service.save_message(
+            db, session_id, "user", request.message
+        )
+
         initial_state = {"messages": [HumanMessage(content=request.message)]}
         result = await app_graph.ainvoke(initial_state)
         
         last_message = result["messages"][-1].content
-        return {"response": last_message, "agent": result.get("current_agent", "unknown")}
+        agent_name = result.get("current_agent", "unknown")
+        
+        # Save Assistant Message
+        await chat_history_service.save_message(
+            db, session_id, "assistant", last_message
+        )
+        
+        return {
+            "response": last_message, 
+            "agent": agent_name,
+            "session_id": session_id
+        }
     except Exception as e:
         print(f"Error in chat_agent: {e}")
         raise HTTPException(status_code=500, detail=str(e))
