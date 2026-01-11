@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/Button';
 import { ArrowRight, Shield, Brain, MessageSquare, TrendingUp, Users, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import GreenMotion from '../Assets/GREEN_MOTION.mp4';
 
 export function LandingPage() {
   const [index, setIndex] = useState(0);
@@ -77,12 +78,17 @@ export function LandingPage() {
 
           {/* Hero Visual */}
           <div className="mt-20 relative animate-in fade-in zoom-in duration-1000 delay-500">
-            <div className="glass-panel p-2 rounded-2xl max-w-5xl mx-auto shadow-2xl shadow-primary/10 border border-white/10">
-               <img 
-                 src="https://placehold.co/1200x675/111/444?text=Dashboard+Preview" 
-                 alt="App Interface" 
+            <div className="glass-panel p-2 rounded-2xl max-w-5xl mx-auto shadow-2xl shadow-primary/10 border border-white/10 overflow-hidden">
+               <video 
+                 autoPlay 
+                 loop 
+                 muted 
+                 playsInline
                  className="rounded-xl w-full h-auto opacity-80"
-               />
+               >
+                 <source src={GreenMotion} type="video/mp4" />
+                 Your browser does not support the video tag.
+               </video>
                {/* Overlay Gradients */}
                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent h-full w-full rounded-2xl pointer-events-none" />
             </div>
@@ -222,18 +228,215 @@ export function LandingPage() {
       </section>
 
       <Footer />
+      <GlitchFooter />
+    </div>
+  );
+}
+
+/**
+ * GlitchFooter Component
+ * 
+ * Implements a refined, targeted glitch effect with localized cursor tracking.
+ * - Effect Scope: 100x100px area (50px radius mask)
+ * - Motion: 200ms delayed tracking with 10px offset and ease-out
+ * - Animation: 0.5Hz frequency, max 5px displacement, 300ms transitions
+ * - Visuals: Subtle RGB split, noise texture, brightness fluctuations
+ */
+function GlitchFooter() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 });
+  const [targetPos, setTargetPos] = useState({ x: -1000, y: -1000 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [scrollIntensity, setScrollIntensity] = useState(0);
+  const requestRef = useRef<number>();
+  const lastScrollY = useRef(0);
+
+  // Handle scroll-based intensity
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = Math.abs(currentScrollY - lastScrollY.current);
+      setScrollIntensity(Math.min(delta / 50, 1)); // Scale intensity based on scroll speed
+      lastScrollY.current = currentScrollY;
+      
+      // Decay intensity
+      setTimeout(() => setScrollIntensity(0), 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Canvas-based pixel glitch effect
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    const pixelSize = 4;
+    
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Always have a base intensity of 0.2, increase on hover or scroll
+      const intensity = Math.max(0.2, isHovering ? 0.8 : scrollIntensity);
+      const cols = Math.ceil(canvas.width / pixelSize);
+      const rows = Math.ceil(canvas.height / pixelSize);
+
+      for (let i = 0; i < 100 * intensity; i++) {
+        const x = Math.floor(Math.random() * cols) * pixelSize;
+        const y = Math.floor(Math.random() * rows) * pixelSize;
+        const w = pixelSize * (Math.random() > 0.8 ? 4 : 1);
+        const h = pixelSize;
+
+        ctx.fillStyle = Math.random() > 0.5 ? '#00FFB2' : '#00C9FF';
+        ctx.globalAlpha = Math.random() * 0.4 * intensity;
+        ctx.fillRect(x, y, w, h);
+      }
+
+      animationId = requestAnimationFrame(render);
+    };
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+
+    window.addEventListener('resize', resize);
+    resize();
+    render();
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationId);
+    };
+  }, [isHovering, scrollIntensity]);
+
+  // Smooth cursor tracking with delay and easing
+  useEffect(() => {
+    const updatePosition = (time: number) => {
+      if (!isHovering) return;
+
+      const easing = 0.15; // Ease-out factor
+      const offset = 10; // 10px offset
+
+      setCursorPos(prev => {
+        const dx = (targetPos.x + offset) - prev.x;
+        const dy = (targetPos.y + offset) - prev.y;
+        
+        return {
+          x: prev.x + dx * easing,
+          y: prev.y + dy * easing
+        };
+      });
+
+      requestRef.current = requestAnimationFrame(updatePosition);
+    };
+
+    if (isHovering) {
+      requestRef.current = requestAnimationFrame(updatePosition);
+    }
+
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
+  }, [isHovering, targetPos]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setTargetPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
+
+  return (
+    <div 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => {
+        setIsHovering(false);
+        setCursorPos({ x: -1000, y: -1000 });
+        setTargetPos({ x: -1000, y: -1000 });
+      }}
+      className="w-full bg-emerald-500 py-0 flex items-center justify-center overflow-hidden group cursor-default border-t border-black/5 relative"
+      style={{
+        '--cursor-x': `${cursorPos.x}px`,
+        '--cursor-y': `${cursorPos.y}px`,
+        '--glitch-radius': '120px',
+        '--pixel-distort': isHovering ? '4px' : '0px',
+      } as React.CSSProperties}
+    >
+      {/* Background Pixel Canvas */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0"
+      />
+
+      <div className="relative w-full h-[32vw] md:h-[28vw] flex items-center justify-center pointer-events-none">
+        {/* Glitch Layers - Behind the main text - Always Visible */}
+        <div className={`absolute inset-0 z-10 glitch-transition opacity-100`}>
+          {/* Enhanced RGB Split - Red */}
+          <h1 className="absolute inset-0 text-[32vw] font-[1000] text-white-500/40 leading-[0.7] tracking-[-0.08em] select-none w-full text-center animate-rgb-split-r animate-matrix-glitch-1">
+            MAYA
+          </h1>
+          {/* Enhanced RGB Split - Blue */}
+          <h1 className="absolute inset-0 text-[32vw] font-[1000] text-white-500/40 leading-[0.7] tracking-[-0.08em] select-none w-full text-center animate-rgb-split-b animate-matrix-glitch-2">
+            MAYA
+          </h1>
+          
+          {/* Additional Pixelated Distort Layer */}
+          <div className="absolute inset-0 flex items-center justify-center animate-pixel-move">
+            <h1 className="text-[32vw] font-[1000] text-primary/20 leading-[0.7] tracking-[-0.08em] select-none w-full text-center">
+              MAYA
+            </h1>
+          </div>
+        </div>
+
+        {/* Base Layer - Static Black MAYA - Always on Top for readability */}
+        <h1 className="text-[32vw] font-[1000] text-black leading-[0.7] tracking-[-0.08em] select-none relative z-20 w-full text-center">
+          MAYA
+        </h1>
+
+        {/* Overlays - Above everything - Always Visible */}
+        <div className={`absolute inset-0 z-30 pointer-events-none glitch-transition opacity-100`}>
+          {/* Enhanced Noise Texture Overlay */}
+          <div className="absolute inset-0 opacity-15 mix-blend-overlay animate-noise-jitter bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+          
+          {/* Enhanced Scanline */}
+          <div className="absolute h-[20%] w-full bg-black/5 blur-sm animate-scanline-move" />
+        </div>
+
+        {/* CRT Mesh - Always Visible */}
+        <div className={`absolute inset-0 z-40 bg-[radial-gradient(rgba(0,0,0,0.15)_0.5px,transparent_0.5px)] bg-[length:4px_4px] glitch-transition opacity-100`} />
+      </div>
     </div>
   );
 }
 
 function ValueCard({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
   return (
-    <div className="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-colors group">
-      <div className="mb-6 p-4 rounded-xl bg-white/5 w-fit group-hover:scale-110 transition-transform duration-300">
-        {icon}
+    <div className="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all duration-500 group relative overflow-hidden border border-white/5 hover:border-primary/40 hover:-translate-y-1 shadow-2xl hover:shadow-primary/10">
+      {/* Abstract Glow Background - Always moving */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] opacity-20 group-hover:opacity-50 transition-opacity duration-700">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,255,178,0.15)_0%,transparent_70%)] animate-glow-slow" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,201,255,0.1)_0%,transparent_70%)] animate-glow-slow [animation-delay:-5s]" />
+        </div>
       </div>
-      <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
-      <p className="text-text-secondary leading-relaxed">{desc}</p>
+      
+      <div className="relative z-10">
+        <div className="mb-6 p-4 rounded-xl bg-white/5 w-fit group-hover:scale-110 transition-transform duration-300 border border-white/5 group-hover:border-primary/20 group-hover:bg-primary/10 group-hover:shadow-[0_0_20px_rgba(0,255,178,0.2)]">
+          {icon}
+        </div>
+        <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300">{title}</h3>
+        <p className="text-text-secondary leading-relaxed group-hover:text-white/90 transition-colors duration-300">{desc}</p>
+      </div>
     </div>
   );
 }
