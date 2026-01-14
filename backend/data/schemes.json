@@ -614,5 +614,215 @@
     "eligibility_criteria": {"type": "Entrepreneurs / SHGs / Farmers", "sector": "Livestock", "authority": "Ministry of Fisheries", "min_age": 18, "social_category": ["All"], "geography": "Rural focus", "ownership_stake": "Individual/Group"},
     "required_documents": ["Aadhaar", "Land Records", "Project Report", "Identity Proof"],
     "application_mode": "Online (NLM Portal)", "tags": ["livestock", "breed-development", "agriculture-mission", "rural-growth"], "category": "Agriculture", "link": "https://nlm.udyamimitra.in/"
+  },
+  {
+    "name": "UP Startup Policy 2020",
+    "description": "A comprehensive framework to support tech-startups in UP through sustenance allowances and seed capital.",
+    "benefits": ["Sustenance allowance of ₹17,500/month for 1 year.", "Seed funding up to ₹5 Lakhs.", "Patent filing reimbursement up to ₹2 Lakhs."],
+    "eligibility_criteria": {"type": "Startups", "sector": "IT / Tech / Electronics", "authority": "UP IT & Electronics Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered in UP"},
+    "required_documents": ["UP Startup Registration", "DPIIT Certificate", "Pitch Deck", "PAN/GST"],
+    "application_mode": "Online (UP Startup Portal)",
+    "tags": ["startup", "seed-fund", "tech-business", "sustenance"],
+    "category": "Startup Finance",
+    "link": "https://upstartup.in/"
+  },
+  {
+    "name": "Mukhyamantri Yuva Swarozgar Yojana",
+    "description": "Promotes self-employment among educated youth of UP by providing subsidized loans for industries and services.",
+    "benefits": ["Loans up to ₹25 Lakhs (Industry) / ₹10 Lakhs (Service).", "25% margin money subsidy by state govt."],
+    "eligibility_criteria": {"type": "Unemployed Youth", "sector": "Manufacturing / Service", "authority": "DIIC UP", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Individual Proprietorship"},
+    "required_documents": ["High School Certificate", "UP Domicile", "Aadhaar Card", "Project Report"],
+    "application_mode": "Online (MSME UP Portal)",
+    "tags": ["loan", "subsidy", "self-employment", "youth-entrepreneur"],
+    "category": "Finance",
+    "link": "https://diupmsme.upsdc.gov.in/"
+  },
+  {
+    "name": "One District One Product (ODOP) Margin Money Scheme",
+    "description": "Financial assistance for artisans and entrepreneurs working on district-specific traditional products.",
+    "benefits": ["Financial grant from 10% to 25% of project cost.", "Support for marketing and global branding of local products."],
+    "eligibility_criteria": {"type": "Artisans / Entrepreneurs", "sector": "ODOP Specified", "authority": "UP MSME Dept", "min_age": 18, "social_category": ["All"], "geography": "District Specific (UP)", "ownership_stake": "Proprietorship / Partner"},
+    "required_documents": ["Artisan Card / ODOP Reg", "Udyam Registration", "Project Blueprint", "Bank Details"],
+    "application_mode": "Online (ODOP Portal)",
+    "tags": ["odop", "traditional-trade", "msme", "district-specialty"],
+    "category": "MSME / Marketing",
+    "link": "https://odopup.in/"
+  },
+  {
+    "name": "Mukhyamantri Gramodyog Rozgar Yojana",
+    "description": "Focuses on rural entrepreneurship by providing loans for setting up village industries.",
+    "benefits": ["Loans up to ₹10 Lakhs for rural units.", "Interest subsidy for SC/ST and Women entrepreneurs."],
+    "eligibility_criteria": {"type": "Rural Entrepreneurs", "sector": "Village Industries", "authority": "UP Khadi & Village Industries Board", "min_age": 18, "social_category": ["All"], "geography": "Rural Uttar Pradesh", "ownership_stake": "Individual"},
+    "required_documents": ["Rural Domicile Certificate", "Aadhaar", "Caste Certificate (if applicable)", "Project Summary"],
+    "application_mode": "Online (UPKVIB Portal)",
+    "tags": ["rural-business", "khadi", "village-industry", "employment"],
+    "category": "Rural Finance",
+    "link": "http://upkvib.gov.in/"
+  },
+  {
+    "name": "UP Information Technology & ITeS Policy",
+    "description": "Support for software companies and IT startups setting up operations in Uttar Pradesh.",
+    "benefits": ["Capital interest subsidy and electricity duty exemption.", "Reimbursement of lease rentals for IT entities."],
+    "eligibility_criteria": {"type": "IT Companies", "sector": "IT / ITeS / Software", "authority": "UP IT Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered IT Unit"},
+    "required_documents": ["Company Incorporation", "Operational Proof in UP", "Lease Documents", "PAN/GST"],
+    "application_mode": "Online (Nivesh Mitra)",
+    "tags": ["it-sector", "software-startup", "tech-infrastructure", "subsidy"],
+    "category": "IT / Startup",
+    "link": "https://niveshmitra.up.nic.in/"
+  },
+  {
+    "name": "Mahila Samarthya Yojana",
+    "description": "Empowers women entrepreneurs by providing support for cluster development and marketing.",
+    "benefits": ["Assistance for setting up Common Facility Centres (CFC).", "Training and branding support for women-led groups."],
+    "eligibility_criteria": {"type": "Women Entrepreneurs / SHGs", "sector": "Micro Enterprises", "authority": "UP MSME Dept", "min_age": 18, "social_category": ["Women"], "geography": "Uttar Pradesh", "ownership_stake": "Women-led Group/Entity"},
+    "required_documents": ["Group Registration", "Member Aadhaar Cards", "Project Proposal", "Bank Passbook"],
+    "application_mode": "Through District MSME Offices",
+    "tags": ["women-entrepreneur", "shg", "cluster-development", "empowerment"],
+    "category": "Social Welfare / MSME",
+    "link": "https://diupmsme.upsdc.gov.in/"
+  },
+  {
+    "name": "Vishwakarma Shram Samman Yojana",
+    "description": "Supports traditional artisans like carpenters, tailors, and goldsmiths with skill training and advanced toolkits.",
+    "benefits": ["6 days free skill training.", "Free advanced toolkit for the specific trade to start a business."],
+    "eligibility_criteria": {"type": "Traditional Artisans", "sector": "Handicrafts", "authority": "UP MSME Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "N/A"},
+    "required_documents": ["Aadhaar Card", "Ration Card / Voter ID", "Affidavit for Trade", "Bank Details"],
+    "application_mode": "Online (DIUPMSME Portal)",
+    "tags": ["artisan", "traditional-skill", "toolkit", "self-employment"],
+    "category": "Skill Development",
+    "link": "https://diupmsme.upsdc.gov.in/"
+  },
+  {
+    "name": "UP Food Processing Industry Policy 2023",
+    "description": "Incentivizes the establishment of food processing units to bridge the gap between farmers and markets.",
+    "benefits": ["Capital investment subsidy up to 35% (Max ₹5 Crores).", "Interest subsidy for a period of 5 years."],
+    "eligibility_criteria": {"type": "Agri-Entrepreneurs / Companies", "sector": "Food Processing", "authority": "UP Horticulture & Food Processing", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered Unit"},
+    "required_documents": ["DPR", "FSSAI License", "Land Ownership/Lease", "Pollution Clearance"],
+    "application_mode": "Online (Nivesh Mitra)",
+    "tags": ["food-processing", "agri-business", "manufacturing", "subsidy"],
+    "category": "Industry / Agri",
+    "link": "http://uphorticulture.gov.in/"
+  },
+  {
+    "name": "Mukhyamantri Bunkar Soure Urja Yojana",
+    "description": "Assistance for weavers to adopt solar power for their powerlooms to reduce operational costs.",
+    "benefits": ["Subsidy up to 50% for general and 75% for SC/ST weavers for solar plants.", "Solar inverter and battery support for business."],
+    "eligibility_criteria": {"type": "Powerloom Weavers", "sector": "Textiles", "authority": "UP Textile Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh Clusters", "ownership_stake": "Proprietorship / Cooperative"},
+    "required_documents": ["Weaver ID Card", "Caste Certificate (if applicable)", "Solar Quotation", "Electricity Bill"],
+    "application_mode": "Through District Textile Offices",
+    "tags": ["textiles", "solar-energy", "weavers", "cost-reduction"],
+    "category": "Infrastructure / MSME",
+    "link": "https://texmin.up.gov.in/"
+  },
+  {
+    "name": "UP Electronics Manufacturing Policy",
+    "description": "Incentives for startups and companies involved in electronic component manufacturing (ESDM).",
+    "benefits": ["Capital subsidy up to 15%.", "Interest subsidy on loans for hardware R&D."],
+    "eligibility_criteria": {"type": "Hardware Startups / Companies", "sector": "Electronics Manufacturing", "authority": "UP IT Dept", "min_age": 18, "social_category": ["All"], "geography": "Noida / Greater Noida / Yamuna Expressway focus", "ownership_stake": "Registered Entity"},
+    "required_documents": ["Company Registration", "Investment Blueprint", "GST/PAN", "Factory License"],
+    "application_mode": "Online (Nivesh Mitra)",
+    "tags": ["electronics", "hardware-startup", "manufacturing", "esdm"],
+    "category": "Industry",
+    "link": "https://it.up.gov.in/"
+  },
+  {
+    "name": "UP Agriculture Export Policy 2019",
+    "description": "Focuses on boosting exports of agricultural produce from UP through logistics and quality support.",
+    "benefits": ["Transport subsidy up to 25% for air/sea export.", "Reimbursement of 50% for international quality certifications."],
+    "eligibility_criteria": {"type": "Merchant Exporters / Farmers", "sector": "Agriculture", "authority": "UP Mandi Parishad", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered Exporter"},
+    "required_documents": ["IEC Code", "APEDA Registration", "Mandi Parishad Certificate", "Shipping Bill"],
+    "application_mode": "Offline (UP Mandi Parishad)",
+    "tags": ["export", "agri-trade", "global-market", "merchant-support"],
+    "category": "Trade / Export",
+    "link": "http://upmandiparishad.upsdc.gov.in/"
+  },
+  {
+    "name": "UP Micro-Entrepreneur Accident Insurance",
+    "description": "Safety net for small merchants and traders in case of unfortunate accidents.",
+    "benefits": ["Accidental death/disability cover up to ₹5 Lakhs.", "Social security for family members of the entrepreneur."],
+    "eligibility_criteria": {"type": "Small Traders / Merchants", "sector": "Retail / Trading", "authority": "UP MSME Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered Micro Entity"},
+    "required_documents": ["Udyam Registration", "Nominee Details", "Aadhaar Card", "Bank Details"],
+    "application_mode": "Online (DIUPMSME Portal)",
+    "tags": ["insurance", "merchant-safety", "social-security", "micro-trade"],
+    "category": "Social Welfare",
+    "link": "https://diupmsme.upsdc.gov.in/"
+  },
+  {
+    "name": "UP Tourism Policy 2022 (Entrepreneur Focus)",
+    "description": "Support for entrepreneurs setting up heritage hotels, homestays, or tourism-related services.",
+    "benefits": ["Subsidy up to 25% on capital investment.", "Support for marketing and branding of tourist spots."],
+    "eligibility_criteria": {"type": "Entrepreneurs / Homestay Owners", "sector": "Tourism", "authority": "UP Tourism Dept", "min_age": 18, "social_category": ["All"], "geography": "Tourism Hubs in UP", "ownership_stake": "Registered Homestay/Hotel"},
+    "required_documents": ["Tourism Dept Approval", "Building Plan", "Aadhaar", "Fire/Safety Clearance"],
+    "application_mode": "Online (Nivesh Mitra)",
+    "tags": ["tourism", "homestay", "service-business", "hospitality"],
+    "category": "Tourism / Business",
+    "link": "https://uptourism.gov.in/"
+  },
+  {
+    "name": "UP MSME Promotion Policy 2022",
+    "description": "A policy providing capital subsidies and tax exemptions to boost the MSME sector, with a special focus on backward regions like Purvanchal and Bundelkhand.",
+    "benefits": ["Capital subsidy up to 25% for micro units.", "100% Stamp Duty exemption in Purvanchal and Bundelkhand regions.", "Interest subsidy up to ₹25 Lakhs per year for 5 years."],
+    "eligibility_criteria": {"type": "MSME Units", "sector": "Manufacturing", "authority": "UP MSME Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered MSME"},
+    "required_documents": ["Udyam Registration", "Investment Proof", "Land Documents", "PAN/GST"],
+    "application_mode": "Online (Nivesh Mitra)",
+    "tags": ["msme", "subsidy", "stamp-duty", "industrial-growth"],
+    "category": "MSME / Finance",
+    "link": "https://niveshmitra.up.nic.in/"
+  },
+  {
+    "name": "Mukhyamantri Shikshuta Protsahan Yojana (CMAPS)",
+    "description": "A scheme providing internship opportunities and stipends to educated youth in various industries to encourage future entrepreneurship.",
+    "benefits": ["Monthly stipend of ₹2,500 (shared by Govt and Industry).", "Industry-recognized training and certificate.", "Priority in state self-employment loan schemes after completion."],
+    "eligibility_criteria": {"type": "Educated Youth", "sector": "Cross-sector", "authority": "UP Training & Employment Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "N/A"},
+    "required_documents": ["Educational Certificates", "UP Domicile", "Aadhaar Card", "Bank Passbook"],
+    "application_mode": "Online (UP Training Portal)",
+    "tags": ["internship", "stipend", "youth-skill", "employment"],
+    "category": "Skill Development / Youth",
+    "link": "https://sewayojan.up.nic.in/"
+  },
+  {
+    "name": "Mini / Micro Dairy Scheme",
+    "description": "Supports agri-entrepreneurs in setting up dairy units to increase milk production and provide self-employment in rural areas.",
+    "benefits": ["Bank loans for purchasing 2 to 10 cattle units.", "Interest subsidy provided by the state government on the loan amount."],
+    "eligibility_criteria": {"type": "Agri-Entrepreneurs / Farmers", "sector": "Animal Husbandry", "authority": "UP Dairy Development Dept", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Individual"},
+    "required_documents": ["Land Documents", "Cattle Purchase Quotation", "Aadhaar Card", "Project Summary"],
+    "application_mode": "Through District Dairy Development Office",
+    "tags": ["dairy", "agri-loan", "livestock", "rural-business"],
+    "category": "Agri-Business",
+    "link": "http://updairydevelopment.gov.in/"
+  },
+  {
+    "name": "UP Solar Energy Policy 2022",
+    "description": "Incentivizes the development of solar energy projects, including rooftop solar and utility-scale solar parks for commercial use.",
+    "benefits": ["100% Electricity Duty exemption for a period of 10 years.", "Capital subsidy for solar plants and commercial setups.", "Stamp duty exemption on land purchased for solar projects."],
+    "eligibility_criteria": {"type": "Solar Developers / Entrepreneurs", "sector": "Renewable Energy", "authority": "UPNEDA", "min_age": 18, "social_category": ["All"], "geography": "Uttar Pradesh", "ownership_stake": "Registered Entity"},
+    "required_documents": ["Project Report", "Land Lease/Ownership", "Technical Feasibility Study", "PAN/GST"],
+    "application_mode": "Online (UPNEDA Portal)",
+    "tags": ["solar", "green-energy", "clean-tech", "subsidy"],
+    "category": "Renewable Energy",
+    "link": "https://upneda.org.in/"
+  },
+  {
+    "name": "UP Warehousing & Logistics Policy",
+    "description": "Facilitates the creation of high-quality logistics infrastructure and warehouses to support the state's industrial supply chain.",
+    "benefits": ["75% concession on land conversion charges for logistics use.", "Interest subsidy on loans taken for warehouse construction.", "Capital subsidy for logistics park infrastructure development."],
+    "eligibility_criteria": {"type": "Infrastructure Developers", "sector": "Logistics & Warehousing", "authority": "UP Commerce & Industry Dept", "min_age": 18, "social_category": ["All"], "geography": "Strategic Hubs in UP", "ownership_stake": "Registered Unit"},
+    "required_documents": ["Land Allotment Letter", "Detailed Project Report", "Compliance Clearances", "Bank Sanction Letter"],
+    "application_mode": "Online (Nivesh Mitra)",
+    "tags": ["logistics", "warehouse", "infrastructure", "supply-chain"],
+    "category": "Infrastructure",
+    "link": "https://niveshmitra.up.nic.in/"
+  },
+  {
+    "name": "Industrial Plot Allotment for Women",
+    "description": "Specifically reserves industrial land and provides financial concessions for 100% women-led enterprises in the state.",
+    "benefits": ["5% to 10% land reservation in industrial areas managed by UPSIDA.", "Concessional rates on land allotment and priority processing for women."],
+    "eligibility_criteria": {"type": "Women Entrepreneurs", "sector": "Manufacturing / Service", "authority": "UPSIDA", "min_age": 18, "social_category": ["Women"], "geography": "UP Industrial Areas", "ownership_stake": "100% Women-owned"},
+    "required_documents": ["MSME Registration", "Women Ownership Proof", "Business Plan", "Aadhaar Card"],
+    "application_mode": "Online (UPSIDA Portal)",
+    "tags": ["women-in-business", "land-allotment", "industrial-plot", "concession"],
+    "category": "Industrial Land / Women",
+    "link": "https://onlineupsidc.com/"
   }
+
 ]
