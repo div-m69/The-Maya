@@ -218,7 +218,7 @@ export function PixelMaya() {
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 100px 0;
+          padding: 40px 0; /* Reduced from 100px for tighter footer integration */
           overflow: hidden;
           position: relative;
         }
@@ -260,12 +260,15 @@ export function PixelMaya() {
         /* RESPONSIVE SCALING */
         @media (min-width: 1200px) {
           :root { --pixel-size: 7px; --letter-gap: 50px; }
+          .pixel-maya-container { padding: 50px 0; }
         }
         @media (max-width: 768px) {
           :root { --pixel-size: 3.5px; --letter-gap: 25px; }
+          .pixel-maya-container { padding: 30px 0; }
         }
         @media (max-width: 480px) {
           :root { --pixel-size: 2px; --letter-gap: 15px; }
+          .pixel-maya-container { padding: 20px 0; }
         }
 
         /* ------------------------------------------------------------

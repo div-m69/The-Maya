@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/Button';
+import FancyOutlineLiftButton from '../components/FancyOutlineLiftButton';
+import { LoadingScreen } from '../components/LoadingScreen';
 import { ArrowRight, Shield, Brain, MessageSquare, TrendingUp, Users, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import GreenMotion from '../Assets/GREEN_MOTION.mp4';
 import { PixelMaya } from '../components/PixelMaya';
 
 export function LandingPage() {
+  const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLSpanElement>(null);
@@ -26,8 +29,10 @@ export function LandingPage() {
   }, [isPaused, totalItems]);
 
   return (
-    <div className="min-h-screen bg-black overflow-hidden">
-      <Header />
+    <>
+      {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
+      <div className={`min-h-screen bg-black overflow-hidden transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Header />
       
       {/* 1. HERO SECTION */}
       <section className="relative min-h-screen flex items-center justify-center pt-40">
@@ -165,7 +170,12 @@ export function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <Button>Try Scheme Finder</Button>
+              <br />
+              <Link to="/chat">
+                <FancyOutlineLiftButton>
+                  Try Scheme Finder
+                </FancyOutlineLiftButton>
+              </Link>
             </div>
           </div>
 
@@ -197,7 +207,12 @@ export function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <Button variant="secondary">Meet the Agents</Button>
+              <br />
+              <Link to="/agents">
+                <FancyOutlineLiftButton>
+                  Meet the Agents
+                </FancyOutlineLiftButton>
+              </Link>
             </div>
           </div>
         </div>
@@ -231,6 +246,7 @@ export function LandingPage() {
       <Footer />
       <PixelMaya />
     </div>
+    </>
   );
 }
 
